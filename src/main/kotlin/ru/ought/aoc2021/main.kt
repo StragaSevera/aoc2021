@@ -9,5 +9,5 @@ fun main() {
         println("There is no day like this day: $dayName")
         return
     }
-    println(day.handle("test"))
+    println(day.handleResource())
 }
