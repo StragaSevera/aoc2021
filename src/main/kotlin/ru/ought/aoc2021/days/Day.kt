@@ -14,11 +14,11 @@ interface Day {
 
     fun handleResource(): String {
         val className = javaClass.simpleName
-        val resource = Regex("Day(.*)").find(className)?.groupValues?.get(1)
-            ?: error("There is no resource for the class $className")
-        val resourceName = "${resource}.txt"
-        val resourceContents = javaClass.getResourceAsStream(resourceName)?.reader()?.use { it.readText() }
-            ?: error("The resource $resourceName cannot be read!")
+        val resourceName = Regex("Day(.*)").find(className)?.groupValues?.get(1)
+            ?: error("There class $className cannot have a resource!")
+        val resourceFileName = "${resourceName}.txt"
+        val resourceContents = javaClass.getResourceAsStream(resourceFileName)?.reader()?.use { it.readText() }
+            ?: error("The resource $resourceFileName cannot be read!")
         return handle(resourceContents)
 
     }
